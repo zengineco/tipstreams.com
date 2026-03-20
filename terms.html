@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — TipStreams</title>
+<meta name="description" content="Terms of Service and legal disclaimer for TipStreams — the multi-chain crypto tip QR generator for streamers and content creators.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tipstreams.com/terms.html">
+
+<!--
+// ============================================================
+// Author: Vincent Gonzalez | © 2026 Zengine™ | www.zengine.site
+// Project: TipStreams — terms.html
+// Version: 1.0.0
+// ------------------------------------------------------------
+// Google AdSense auto-ads script.
+// Verifies site ownership + enables automatic ad placement.
+// DO NOT modify the client= parameter.
+// ============================================================
+-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8826956454892311"
+     crossorigin="anonymous"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:      #080b10;
+  --surface: #0d1117;
+  --border:  rgba(255,255,255,0.06);
+  --text:    #f0f4f8;
+  --text-2:  #8899aa;
+  --text-3:  #4a5a6a;
+  --accent:  #f7931a;
+  --font:    'DM Sans', sans-serif;
+  --mono:    'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 52px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--accent);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+}
+
+.nav-logo-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.nav-logo-name span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav-link:hover { color: var(--accent); }
+.nav-link.active { color: var(--text); }
+
+/* AD SLOT */
+.ad-slot {
+  margin-bottom: 40px;
+  text-align: center;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HEADER */
+.doc-header { margin-bottom: 48px; }
+
+.doc-eyebrow {
+  font-size: 11px;
+  font-family: var(--mono);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.doc-title {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.doc-meta {
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--text-3);
+  letter-spacing: 0.5px;
+}
+
+/* TOC */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 48px;
+}
+
+.toc-title {
+  font-size: 11px;
+  font-family: var(--mono);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 12px;
+}
+
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.toc-list li a { font-size: 13px; color: var(--text-2); text-decoration: none; transition: color 0.15s; }
+.toc-list li a:hover { color: var(--accent); }
+
+/* DOCUMENT BODY */
+.doc-section {
+  margin-bottom: 52px;
+  scroll-margin-top: 24px;
+}
+
+.doc-section + .doc-section {
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 10px;
+  margin-top: 28px;
+}
+
+p { color: var(--text-2); margin-bottom: 14px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--text); font-weight: 500; }
+
+ul, ol { padding-left: 20px; color: var(--text-2); margin-bottom: 14px; }
+li { margin-bottom: 6px; line-height: 1.65; }
+
+code {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  background: rgba(247,147,26,0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.callout {
+  background: rgba(247,147,26,0.06);
+  border: 1px solid rgba(247,147,26,0.2);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.callout p { color: var(--text); margin: 0; font-size: 14px; line-height: 1.6; }
+.callout strong { color: var(--accent); }
+
+.allcaps {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-copy { font-size: 11px; color: var(--text-3); }
+.footer-link { font-size: 11px; color: var(--text-3); text-decoration: none; font-family: var(--mono); transition: color 0.15s; }
+.footer-link:hover { color: var(--accent); }
+.footer-disclaimer { font-size: 10px; color: var(--text-3); opacity: 0.6; flex-basis: 100%; order: 3; margin-top: 6px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="./index.html">
+      <div class="nav-logo-mark">TS</div>
+      <div class="nav-logo-name">Tip<span>Streams</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="./index.html"   class="nav-link">Generator</a>
+      <a href="./privacy.html" class="nav-link">Privacy Policy</a>
+      <a href="./terms.html"   class="nav-link active">Terms</a>
+    </div>
+  </nav>
+
+  <!-- TOP AD UNIT -->
+  <!-- Replace YOUR_AD_SLOT_ID with slot from AdSense → Ads → By ad unit → Display ads -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+         style="display:block;width:100%;max-width:728px;"
+         data-ad-client="ca-pub-8826956454892311"
+         data-ad-slot="YOUR_AD_SLOT_ID"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-eyebrow">Legal</div>
+    <h1 class="doc-title">Terms of Service</h1>
+    <div class="doc-meta">TipStreams · Effective: March 2026 · Last updated: March 2026</div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Plain English summary:</strong> TipStreams is a free QR code generator. It never touches your money. You own your wallet. We own nothing. Use it legally and responsibly.</p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#agreement">Agreement to terms</a></li>
+      <li><a href="#description">Description of service</a></li>
+      <li><a href="#permitted">Permitted use</a></li>
+      <li><a href="#prohibited">Prohibited use</a></li>
+      <li><a href="#no-financial">No financial services</a></li>
+      <li><a href="#crypto-disclaimer">Cryptocurrency disclaimer</a></li>
+      <li><a href="#disclaimer">Disclaimer of warranties</a></li>
+      <li><a href="#liability">Limitation of liability</a></li>
+      <li><a href="#indemnification">Indemnification</a></li>
+      <li><a href="#intellectual-property">Intellectual property</a></li>
+      <li><a href="#age">Age requirement</a></li>
+      <li><a href="#governing-law">Governing law</a></li>
+      <li><a href="#changes">Changes to terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- SECTIONS -->
+
+  <div class="doc-section" id="agreement">
+    <h2>Agreement to terms</h2>
+    <p>These Terms of Service ("Terms") constitute a legally binding agreement between you and Zengine™ ("we," "us," or "our") governing your access to and use of TipStreams, including any related websites, tools, or services (collectively, the "Service").</p>
+    <p><strong>By accessing or using TipStreams, you confirm that you have read, understood, and agree to be bound by these Terms.</strong> If you do not agree, you must immediately stop using the Service.</p>
+  </div>
+
+  <div class="doc-section" id="description">
+    <h2>Description of service</h2>
+    <p>TipStreams is a client-side web application that generates QR codes encoding cryptocurrency payment request URIs. The Service accepts user-provided wallet addresses and produces scannable QR codes in standard formats such as <code>bitcoin:address?amount=0.001</code>, <code>ethereum:address</code>, <code>dogecoin:address?amount=10</code>, and similar schemes for supported blockchains.</p>
+    <p>The Service is provided free of charge. All computation — including QR generation, image processing, and color operations — runs entirely within your browser. No user data is transmitted to any TipStreams server in connection with QR generation. See our <a href="./privacy.html" style="color:var(--accent);">Privacy Policy</a> for full details.</p>
+    <p>Supported chains at launch include Bitcoin (BTC), Ethereum (ETH), Dogecoin (DOGE), Litecoin (LTC), Solana (SOL), Monero (XMR), TRON (TRX), and BNB Chain (BNB). Supported chains may change at any time without notice.</p>
+  </div>
+
+  <div class="doc-section" id="permitted">
+    <h2>Permitted use</h2>
+    <p>Subject to these Terms, you are permitted to:</p>
+    <ul>
+      <li>Generate QR codes encoding cryptocurrency wallet addresses that you own or have explicit authorization to use</li>
+      <li>Download generated QR code images for personal or commercial use in connection with legitimate cryptocurrency tipping</li>
+      <li>Embed generated QR codes on streaming platforms (Twitch, YouTube, Kick, etc.), websites, social media profiles, and printed materials</li>
+      <li>Use the Service to facilitate voluntary cryptocurrency tips from viewers, fans, or supporters to your wallet</li>
+      <li>Share links to the Service with others</li>
+    </ul>
+  </div>
+
+  <div class="doc-section" id="prohibited">
+    <h2>Prohibited use</h2>
+    <p>You may not use TipStreams to:</p>
+    <ul>
+      <li><strong>Fraudulent activity</strong> — generate QR codes for wallet addresses you do not own with intent to deceive others into sending funds to those addresses</li>
+      <li><strong>Money laundering</strong> — use the Service to facilitate the concealment or laundering of illegally obtained funds</li>
+      <li><strong>Sanctions evasion</strong> — generate QR codes for wallet addresses belonging to sanctioned individuals, entities, or jurisdictions under United States law (OFAC) or applicable international sanctions</li>
+      <li><strong>Phishing or social engineering</strong> — use generated QR codes to trick others into sending funds under false pretenses</li>
+      <li><strong>Automated scraping</strong> — use bots, crawlers, or automated scripts to access or use the Service in ways that could harm performance or availability</li>
+      <li><strong>Reverse engineering</strong> — decompile, disassemble, or otherwise attempt to derive source code from the Service beyond what is made publicly available</li>
+      <li><strong>Resale without permission</strong> — resell, sublicense, or white-label the Service without prior written authorization from Zengine™</li>
+      <li><strong>Illegal activity of any kind</strong> — use the Service in violation of any applicable federal, state, local, or international law or regulation</li>
+    </ul>
+    <p>We reserve the right to block access to the Service from any user or region we reasonably believe is engaging in prohibited use, without prior notice and without liability.</p>
+  </div>
+
+  <div class="doc-section" id="no-financial">
+    <h2>No financial services</h2>
+    <div class="callout">
+      <p><strong>TipStreams is not a financial institution, payment processor, money transmitter, cryptocurrency exchange, or broker.</strong> It does not hold, custody, transmit, convert, or process any funds or cryptocurrency on behalf of any user.</p>
+    </div>
+    <p>The QR codes generated by TipStreams are informational artifacts — the digital equivalent of printing your wallet address on a business card. The act of generating a QR code does not constitute a financial transaction of any kind.</p>
+    <p>Any cryptocurrency transaction that occurs as a result of a viewer scanning a TipStreams-generated QR code is conducted directly between the viewer's wallet application and the recipient's wallet address on the relevant blockchain network. TipStreams is not a party to, intermediary in, or facilitator of any such transaction.</p>
+    <p>Zengine™ does not require, request, apply for, or hold any money transmission license, cryptocurrency exchange license, or similar financial services authorization in any jurisdiction, because no such license is required for the Service as described.</p>
+  </div>
+
+  <div class="doc-section" id="crypto-disclaimer">
+    <h2>Cryptocurrency disclaimer</h2>
+    <p>Cryptocurrency involves significant risk. By using TipStreams, you acknowledge and accept the following:</p>
+
+    <h3>Transaction irreversibility</h3>
+    <p>Cryptocurrency transactions on all supported blockchains are <strong>irreversible</strong>. Once a transaction is broadcast to the network and confirmed, it cannot be reversed, cancelled, or refunded by any party including TipStreams, Zengine™, or the recipient. If you distribute a QR code with an incorrect wallet address, any funds sent to that address are permanently unrecoverable.</p>
+
+    <h3>Address accuracy is your responsibility</h3>
+    <p>TipStreams validates wallet address format using pattern-matching rules but <strong>does not and cannot verify</strong> that an address is active, belongs to you, is capable of receiving funds on the selected network, or is not a sanctioned address. Always independently verify your wallet address before distributing any QR code publicly.</p>
+
+    <h3>Cross-chain errors</h3>
+    <p>Sending cryptocurrency to an address on the wrong network (e.g., sending ETH to a TRX address, or sending BTC to a Bech32 address on the wrong fork) may result in permanent loss of funds. TipStreams generates URIs for the chain you select — you are responsible for ensuring your address is correct for the selected chain.</p>
+
+    <h3>No investment or financial advice</h3>
+    <p>Nothing on TipStreams constitutes financial advice, investment advice, legal advice, or tax advice. We make no representations regarding the value, stability, regulatory status, or tax treatment of any cryptocurrency in any jurisdiction.</p>
+
+    <h3>Platform compliance</h3>
+    <p>You are solely responsible for ensuring that accepting cryptocurrency tips complies with the Terms of Service of any platform where you display a TipStreams QR code (including but not limited to Twitch, YouTube, and Kick). TipStreams makes no representation that such use is permitted on any third-party platform.</p>
+
+    <h3>Tax obligations</h3>
+    <p>Cryptocurrency received as tips may constitute taxable income in your jurisdiction. You are solely responsible for accurate reporting of all cryptocurrency income to applicable tax authorities. TipStreams does not provide tax forms, reporting, or guidance of any kind.</p>
+  </div>
+
+  <!-- MID-PAGE AD UNIT -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+         style="display:block;width:100%;max-width:728px;"
+         data-ad-client="ca-pub-8826956454892311"
+         data-ad-slot="YOUR_AD_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="doc-section" id="disclaimer">
+    <h2>Disclaimer of warranties</h2>
+    <p class="allcaps">THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, ZENGINE™ EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO:</p>
+    <ul>
+      <li>Warranties of merchantability, fitness for a particular purpose, title, and non-infringement</li>
+      <li>Warranties that the Service will be uninterrupted, error-free, or free of viruses or other harmful components</li>
+      <li>Warranties that generated QR codes will scan correctly on any particular device, operating system, or wallet application</li>
+      <li>Warranties that the Service will remain available or that any particular chain, feature, or functionality will be maintained</li>
+      <li>Warranties regarding the accuracy of wallet address validation</li>
+    </ul>
+    <p>Your use of the Service is entirely at your own risk.</p>
+  </div>
+
+  <div class="doc-section" id="liability">
+    <h2>Limitation of liability</h2>
+    <p class="allcaps">TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL ZENGINE™, ITS OFFICERS, DIRECTORS, EMPLOYEES, CONTRACTORS, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THE SERVICE, INCLUDING BUT NOT LIMITED TO:</p>
+    <ul>
+      <li>Loss of cryptocurrency or funds of any kind</li>
+      <li>Funds sent to an incorrect, inactive, or unauthorized wallet address</li>
+      <li>Failure of a generated QR code to scan correctly</li>
+      <li>Loss of revenue, profits, data, or business opportunities</li>
+      <li>Unauthorized access to or alteration of your transmissions or data</li>
+      <li>Any transaction conducted by a third party as a result of scanning a TipStreams-generated QR code</li>
+    </ul>
+    <p class="allcaps">IN JURISDICTIONS THAT DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, ZENGINE™'S LIABILITY IS LIMITED TO THE MAXIMUM EXTENT PERMITTED BY LAW. IN ALL CASES, ZENGINE™'S TOTAL AGGREGATE LIABILITY SHALL NOT EXCEED FIFTY US DOLLARS ($50.00).</p>
+  </div>
+
+  <div class="doc-section" id="indemnification">
+    <h2>Indemnification</h2>
+    <p>You agree to defend, indemnify, and hold harmless Zengine™ and its officers, directors, employees, and agents from and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or related to:</p>
+    <ul>
+      <li>Your use of the Service</li>
+      <li>Your violation of these Terms</li>
+      <li>Your violation of any applicable law or regulation</li>
+      <li>Your infringement of any third-party rights</li>
+      <li>Any cryptocurrency transaction facilitated in whole or in part by a QR code you generated using the Service</li>
+    </ul>
+  </div>
+
+  <div class="doc-section" id="intellectual-property">
+    <h2>Intellectual property</h2>
+    <p>The TipStreams name, logo, design, code, and all associated intellectual property are owned by Zengine™ and protected by applicable copyright, trademark, and other intellectual property laws.</p>
+    <p>The QR code images you generate using TipStreams are yours to use freely for the permitted purposes described in these Terms. Zengine™ claims no ownership over the QR code images you generate.</p>
+    <p>You may not use the TipStreams name, logo, or branding in any way that suggests endorsement by or affiliation with Zengine™ without prior written permission.</p>
+  </div>
+
+  <div class="doc-section" id="age">
+    <h2>Age requirement</h2>
+    <p>By using TipStreams, you represent and warrant that you are at least 18 years of age, or the age of majority in your jurisdiction if higher than 18. You also represent that cryptocurrency activity is legal in your jurisdiction.</p>
+    <p>TipStreams is not directed at, and should not be used by, anyone under the age of 13. If you become aware that a child under 13 is using the Service, please contact us at the address below.</p>
+  </div>
+
+  <div class="doc-section" id="governing-law">
+    <h2>Governing law &amp; dispute resolution</h2>
+    <p>These Terms shall be governed by and construed in accordance with the laws of the State of Florida, United States, without regard to its conflict of law provisions.</p>
+    <p>Any dispute arising out of or relating to these Terms or the Service shall first be subject to good-faith negotiation between the parties. If negotiation fails, disputes shall be resolved by binding arbitration in Lee County, Florida, in accordance with the rules of the American Arbitration Association, except that either party may seek injunctive or equitable relief in any court of competent jurisdiction.</p>
+    <p>You waive any right to participate in a class action lawsuit or class-wide arbitration against Zengine™.</p>
+  </div>
+
+  <div class="doc-section" id="changes">
+    <h2>Changes to these terms</h2>
+    <p>We reserve the right to modify these Terms at any time at our sole discretion. Changes become effective upon posting to this page, indicated by an updated "Last updated" date. Your continued use of the Service after any changes constitutes acceptance of the revised Terms.</p>
+    <p>For material changes, we will make reasonable efforts to provide notice. It is your responsibility to review these Terms periodically.</p>
+  </div>
+
+  <div class="doc-section" id="contact">
+    <h2>Contact</h2>
+    <p>For legal inquiries, Terms of Service questions, or to report misuse of the Service:</p>
+    <p>
+      <strong>Zengine™</strong><br>
+      <a href="mailto:hello@zengine.site" style="color:var(--accent);">hello@zengine.site</a><br>
+      <a href="https://zengine.site" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">www.zengine.site</a><br>
+      Cape Coral, FL — United States
+    </p>
+  </div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="footer-copy">© 2026 Zengine™ — TipStreams</div>
+  <div class="nav-links" style="display:flex;gap:20px;">
+    <a href="./index.html"   class="footer-link">Generator</a>
+    <a href="./privacy.html" class="footer-link">Privacy Policy</a>
+  </div>
+  <div class="footer-disclaimer">
+    TipStreams generates QR codes for informational purposes only. It does not process, hold, transmit, or facilitate cryptocurrency transactions. Users are solely responsible for compliance with all applicable laws. Ads served by Google AdSense (ca-pub-8826956454892311).
+  </div>
+</footer>
+
+</body>
+</html>
