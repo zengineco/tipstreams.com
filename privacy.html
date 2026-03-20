@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy & Terms of Service — TipStreams</title>
+<meta name="description" content="Privacy Policy and Terms of Service for TipStreams — the multi-chain crypto tip QR generator for streamers.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tipstreams.com/privacy.html">
+
+<!-- ============================================================
+  Google AdSense — pub ca-pub-8826956454892311
+  Auto-ads script. Place in <head> of every page.
+  IMPORTANT: This tag both verifies site ownership AND
+  enables auto-ad placement. Do not remove or modify the
+  client= parameter.
+============================================================ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8826956454892311"
+     crossorigin="anonymous"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:      #080b10;
+  --surface: #0d1117;
+  --border:  rgba(255,255,255,0.06);
+  --text:    #f0f4f8;
+  --text-2:  #8899aa;
+  --text-3:  #4a5a6a;
+  --accent:  #f7931a;
+  --font:    'DM Sans', sans-serif;
+  --mono:    'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 52px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--accent);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+}
+
+.nav-logo-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.nav-logo-name span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav-link:hover { color: var(--accent); }
+.nav-link.active { color: var(--text); }
+
+/* AD SLOT — top banner */
+.ad-top {
+  margin-bottom: 40px;
+  text-align: center;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HEADER */
+.doc-header {
+  margin-bottom: 48px;
+}
+
+.doc-eyebrow {
+  font-size: 11px;
+  font-family: var(--mono);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.doc-title {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.doc-meta {
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--text-3);
+  letter-spacing: 0.5px;
+}
+
+/* TOC */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 48px;
+}
+
+.toc-title {
+  font-size: 11px;
+  font-family: var(--mono);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 12px;
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.toc-list li a {
+  font-size: 13px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.toc-list li a:hover { color: var(--accent); }
+
+/* DOCUMENT BODY */
+.doc-section {
+  margin-bottom: 52px;
+  scroll-margin-top: 24px;
+}
+
+.doc-section + .doc-section {
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 10px;
+  margin-top: 28px;
+}
+
+p {
+  color: var(--text-2);
+  margin-bottom: 14px;
+}
+
+p:last-child { margin-bottom: 0; }
+
+strong { color: var(--text); font-weight: 500; }
+
+ul, ol {
+  padding-left: 20px;
+  color: var(--text-2);
+  margin-bottom: 14px;
+}
+
+li { margin-bottom: 6px; line-height: 1.65; }
+
+/* Highlight box */
+.callout {
+  background: rgba(247,147,26,0.06);
+  border: 1px solid rgba(247,147,26,0.2);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.callout p {
+  color: var(--text);
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.callout strong { color: var(--accent); }
+
+/* divider */
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+
+/* AD SLOT — mid page */
+.ad-mid {
+  margin: 40px 0;
+  text-align: center;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-copy { font-size: 11px; color: var(--text-3); }
+.footer-link { font-size: 11px; color: var(--text-3); text-decoration: none; font-family: var(--mono); transition: color 0.15s; }
+.footer-link:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="./index.html">
+      <div class="nav-logo-mark">TS</div>
+      <div class="nav-logo-name">Tip<span>Streams</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="./index.html"   class="nav-link">Generator</a>
+      <a href="./privacy.html" class="nav-link active">Privacy</a>
+      <a href="./terms.html"   class="nav-link">Terms</a>
+    </div>
+  </nav>
+
+  <!-- TOP AD UNIT -->
+  <!-- AdSense display ad — horizontal banner above content -->
+  <!-- Replace data-ad-slot with your real slot ID from AdSense dashboard -->
+  <!-- AdSense → Ads → By ad unit → Display ads → create unit → copy slot ID -->
+  <div class="ad-top">
+    <ins class="adsbygoogle"
+         style="display:block;width:100%;max-width:728px;"
+         data-ad-client="ca-pub-8826956454892311"
+         data-ad-slot="YOUR_AD_SLOT_ID_HERE"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-eyebrow">Legal documents</div>
+    <h1 class="doc-title">Privacy Policy &amp;<br>Terms of Service</h1>
+    <div class="doc-meta">TipStreams · Effective date: March 2026 · Last updated: March 2026</div>
+  </div>
+
+  <!-- IMPORTANT CALLOUT -->
+  <div class="callout">
+    <p><strong>Key point:</strong> TipStreams generates QR codes for informational purposes only. It does not process, hold, transmit, or facilitate any cryptocurrency transaction. No money, cryptocurrency, or financial instrument of any kind ever passes through this service.</p>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#privacy">Privacy Policy</a></li>
+      <li><a href="#data-collected">What data we collect</a></li>
+      <li><a href="#cookies">Cookies &amp; advertising</a></li>
+      <li><a href="#third-parties">Third-party services</a></li>
+      <li><a href="#terms">Terms of Service</a></li>
+      <li><a href="#disclaimer">Disclaimer &amp; limitation of liability</a></li>
+      <li><a href="#crypto-disclaimer">Cryptocurrency disclaimer</a></li>
+      <li><a href="#age">Age requirement</a></li>
+      <li><a href="#changes">Changes to these terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ============================================================
+       PRIVACY POLICY
+  ============================================================ -->
+  <div class="doc-section" id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>This Privacy Policy describes how TipStreams ("we," "our," or "the Service"), operated by Zengine™, collects, uses, and shares information when you use tipstreams.com or any subdomain or path where TipStreams is hosted.</p>
+    <p>By using TipStreams, you agree to the collection and use of information in accordance with this policy.</p>
+  </div>
+
+  <div class="doc-section" id="data-collected">
+    <h2>What data we collect</h2>
+
+    <h3>Data we do not collect</h3>
+    <p>TipStreams is a client-side, static web application. The following data <strong>never leaves your browser and is never transmitted to any TipStreams server</strong>:</p>
+    <ul>
+      <li>Your cryptocurrency wallet addresses</li>
+      <li>Any images you upload as center overlays</li>
+      <li>Tip amounts or labels you enter</li>
+      <li>Generated QR codes</li>
+      <li>Any personally identifiable information you type into the generator</li>
+    </ul>
+    <p>There is no TipStreams server, database, or backend. All QR generation, image processing, and color computation runs entirely within your web browser. When you close the tab, all session data is gone.</p>
+
+    <h3>Data automatically collected</h3>
+    <p>Like any website, TipStreams may collect standard server log data through its hosting provider (GitHub Pages / Netlify). This may include:</p>
+    <ul>
+      <li>IP address (anonymized by hosting provider)</li>
+      <li>Browser type and version</li>
+      <li>Pages visited and time of visit</li>
+      <li>Referring URL</li>
+      <li>Operating system</li>
+    </ul>
+    <p>This data is collected and retained by the hosting provider in accordance with their privacy policies. TipStreams does not have direct access to individual-level server log records.</p>
+
+    <h3>Google Analytics</h3>
+    <p>TipStreams does not currently use Google Analytics. If analytics are added in a future version, this policy will be updated and explicit notice will be provided.</p>
+  </div>
+
+  <div class="doc-section" id="cookies">
+    <h2>Cookies &amp; advertising</h2>
+
+    <h3>Google AdSense</h3>
+    <p>TipStreams displays advertisements served by Google AdSense (publisher ID: ca-pub-8826956454892311). Google AdSense uses cookies and similar tracking technologies to serve ads based on your prior visits to this website and other websites on the internet.</p>
+    <p>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the Internet. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+    <p>For more information on how Google uses data when you use TipStreams, visit: <a href="https://policies.google.com/technologies/partner-sites" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">How Google uses information from sites or apps that use our services</a>.</p>
+
+    <h3>Other cookies</h3>
+    <p>TipStreams may use localStorage (browser local storage) to save session preferences such as your last selected chain or color settings. This data is stored locally in your browser and is not transmitted to any server. You can clear it at any time by clearing your browser's site data.</p>
+  </div>
+
+  <div class="doc-section" id="third-parties">
+    <h2>Third-party services</h2>
+    <p>TipStreams loads the following third-party resources on page load:</p>
+    <ul>
+      <li><strong>Google Fonts</strong> (fonts.googleapis.com) — serves DM Sans and DM Mono typefaces. Subject to Google's <a href="https://policies.google.com/privacy" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</li>
+      <li><strong>Cloudflare CDN</strong> (cdnjs.cloudflare.com) — serves qrcode.js library. Subject to Cloudflare's <a href="https://www.cloudflare.com/privacypolicy/" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</li>
+      <li><strong>Google AdSense</strong> (pagead2.googlesyndication.com) — serves advertisements. Subject to Google's <a href="https://policies.google.com/privacy" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</li>
+    </ul>
+    <p>TipStreams does not sell, rent, trade, or otherwise share your personal information with any third party beyond the service providers listed above.</p>
+  </div>
+
+  <!-- MID-PAGE AD UNIT -->
+  <div class="ad-mid">
+    <ins class="adsbygoogle"
+         style="display:block;width:100%;max-width:728px;"
+         data-ad-client="ca-pub-8826956454892311"
+         data-ad-slot="YOUR_AD_SLOT_ID_HERE"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- ============================================================
+       TERMS OF SERVICE
+  ============================================================ -->
+  <div class="doc-section" id="terms">
+    <h2>Terms of Service</h2>
+    <p>These Terms of Service ("Terms") govern your use of TipStreams, operated by Zengine™ ("we," "us," or "our"). By accessing or using TipStreams, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the Service.</p>
+
+    <h3>Description of service</h3>
+    <p>TipStreams is a QR code generation tool. It accepts user-provided cryptocurrency wallet addresses and generates QR codes that encode standardized payment request URIs (e.g., <code style="font-family:var(--mono);font-size:13px;color:var(--accent);">bitcoin:address?amount=0.001</code>). The Service is provided "as is" and free of charge.</p>
+
+    <h3>Permitted use</h3>
+    <p>You may use TipStreams to:</p>
+    <ul>
+      <li>Generate QR codes encoding your own cryptocurrency wallet addresses</li>
+      <li>Download, embed, or display the generated QR images on your streams, websites, social media, or printed materials</li>
+      <li>Accept cryptocurrency tips from your audience using the generated QR codes</li>
+    </ul>
+
+    <h3>Prohibited use</h3>
+    <p>You may not use TipStreams to:</p>
+    <ul>
+      <li>Generate QR codes encoding wallet addresses you do not own or have authorization to use</li>
+      <li>Facilitate fraud, deception, money laundering, or any illegal activity</li>
+      <li>Generate QR codes for sanctioned individuals, entities, or jurisdictions under applicable law</li>
+      <li>Scrape, copy, or reproduce the Service's code or assets without permission</li>
+      <li>Attempt to reverse-engineer, modify, or create derivative works of the Service</li>
+    </ul>
+  </div>
+
+  <div class="doc-section" id="disclaimer">
+    <h2>Disclaimer &amp; limitation of liability</h2>
+
+    <div class="callout">
+      <p><strong>Important:</strong> TipStreams is a QR code generation tool only. It does not process payments, hold funds, transmit funds, or act as a financial intermediary of any kind.</p>
+    </div>
+
+    <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, ZENGINE™ SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</p>
+    <ul>
+      <li>Loss of cryptocurrency or funds sent to an incorrectly typed wallet address</li>
+      <li>Failure of a generated QR code to scan correctly on any particular device or wallet app</li>
+      <li>Losses arising from the use or inability to use the Service</li>
+      <li>Any transaction conducted as a result of using the Service</li>
+    </ul>
+
+    <p><strong>Wallet address accuracy is the sole responsibility of the user.</strong> TipStreams validates address format using regex patterns, but does not and cannot validate whether an address is currently active, belongs to you, or can receive funds on the selected network. Always verify your address independently before distributing a QR code publicly.</p>
+  </div>
+
+  <div class="doc-section" id="crypto-disclaimer">
+    <h2>Cryptocurrency disclaimer</h2>
+
+    <p>Cryptocurrency is a volatile, speculative, and in some jurisdictions regulated or prohibited asset class. TipStreams makes no representations regarding:</p>
+    <ul>
+      <li>The value, stability, or legal status of any cryptocurrency</li>
+      <li>The tax treatment of cryptocurrency tips in your jurisdiction</li>
+      <li>The compliance of cryptocurrency tipping with platform Terms of Service (e.g., Twitch, YouTube, Kick)</li>
+      <li>The reversibility of cryptocurrency transactions (all transactions are final and irreversible)</li>
+    </ul>
+
+    <p><strong>You are solely responsible for:</strong></p>
+    <ul>
+      <li>Compliance with all applicable laws and regulations in your jurisdiction</li>
+      <li>Accurate reporting of cryptocurrency income for tax purposes</li>
+      <li>Compliance with the Terms of Service of any platform where you display a TipStreams QR code</li>
+      <li>Securing your own wallet private keys — TipStreams has no access to and no ability to recover private keys</li>
+    </ul>
+
+    <p>Nothing on TipStreams constitutes financial advice, investment advice, legal advice, or tax advice.</p>
+  </div>
+
+  <div class="doc-section" id="age">
+    <h2>Age requirement</h2>
+    <p>By using TipStreams, you confirm that you are at least 18 years of age, or the age of majority in your jurisdiction if higher. You also confirm that cryptocurrency activity is legal in your jurisdiction.</p>
+    <p>TipStreams is not directed at children under 13. If you are under 13, do not use this Service.</p>
+  </div>
+
+  <div class="doc-section" id="changes">
+    <h2>Changes to these terms</h2>
+    <p>We reserve the right to modify these Terms and Privacy Policy at any time. Changes will be indicated by updating the "Last updated" date at the top of this page. Continued use of the Service after any changes constitutes acceptance of the new Terms.</p>
+    <p>For significant changes, we will make reasonable efforts to provide notice through the Service or other channels.</p>
+  </div>
+
+  <div class="doc-section" id="contact">
+    <h2>Contact</h2>
+    <p>For questions about these Terms or Privacy Policy, contact:</p>
+    <p>
+      <strong>Zengine™</strong><br>
+      <a href="mailto:hello@zengine.site" style="color:var(--accent);">hello@zengine.site</a><br>
+      <a href="https://zengine.site" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">www.zengine.site</a>
+    </p>
+    <p>Cape Coral, FL — United States</p>
+  </div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="footer-copy">© 2026 Zengine™ — TipStreams</div>
+  <div style="display:flex;gap:20px;">
+    <a href="./index.html"  class="footer-link">← Generator</a>
+    <a href="./terms.html"  class="footer-link">Terms of Service</a>
+  </div>
+</footer>
+
+</body>
+</html>
