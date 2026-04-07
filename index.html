@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TipStreams v2 — Overlay Studio</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+body {
+  background:#0b0f14;
+  color:#fff;
+  font-family:sans-serif;
+  margin:0;
+  padding:20px;
+}
+
+.container {
+  max-width:1000px;
+  margin:auto;
+}
+
+h1 {
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:1fr 320px;
+  gap:20px;
+}
+
+.card {
+  background:#111827;
+  border:1px solid #222;
+  border-radius:12px;
+  padding:16px;
+}
+
+input {
+  width:100%;
+  margin-bottom:10px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #333;
+  background:#0b0f14;
+  color:#fff;
+}
+
+button {
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#22c55e;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover { opacity:0.9; }
+
+#qr {
+  background:#fff;
+  padding:10px;
+  border-radius:10px;
+  display:inline-block;
+}
+
+.overlay-preview {
+  position:relative;
+  height:220px;
+  background:#000;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.overlay-box {
+  position:absolute;
+  bottom:15px;
+  right:15px;
+  text-align:center;
+}
+
+.overlay-label {
+  font-size:12px;
+  opacity:0.8;
+  margin-top:6px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<h1>TipStreams Overlay Studio</h1>
+
+<div class="grid">
+
+<!-- LEFT SIDE -->
+
+<div>
+
+<div class="card">
+<h3>Handle</h3>
+<input id="handle" placeholder="vince">
+</div>
+
+<div class="card">
+<h3>Payment Links</h3>
+<input id="paypal" placeholder="PayPal.me link">
+<input id="cashapp" placeholder="$cashapp">
+<input id="btc" placeholder="BTC address">
+<input id="bmac" placeholder="BuyMeACoffee link">
+</div>
+
+<div class="card">
+<button onclick="saveProfile()">Save Profile</button>
+<button onclick="generateQR()">Generate QR</button>
+<button onclick="openOverlay()">Open Overlay</button>
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div>
+
+<div class="card">
+<h3>QR Preview</h3>
+<div id="qr"></div>
+</div>
+
+<div class="card">
+<h3>Overlay Preview</h3>
+<div class="overlay-preview">
+  <div class="overlay-box">
+    <div id="overlayQR"></div>
+    <div class="overlay-label">Scan to support</div>
+  </div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+function saveProfile() {
+  const profile = {
+    handle: document.getElementById("handle").value,
+    paypal: document.getElementById("paypal").value,
+    cash: document.getElementById("cashapp").value,
+    btc: document.getElementById("btc").value,
+    bmac: document.getElementById("bmac").value
+  };
+
+  localStorage.setItem("tipstreams_profile", JSON.stringify(profile));
+  alert("Saved.");
+}
+
+function loadProfile() {
+  const data = JSON.parse(localStorage.getItem("tipstreams_profile"));
+  if (!data) return;
+
+  document.getElementById("handle").value = data.handle || "";
+  document.getElementById("paypal").value = data.paypal || "";
+  document.getElementById("cashapp").value = data.cash || "";
+  document.getElementById("btc").value = data.btc || "";
+  document.getElementById("bmac").value = data.bmac || "";
+}
+
+function buildRouterHTML(profile) {
+  return `
+<!DOCTYPE html>
+<html>
+<body style="background:#0b0f14;color:white;font-family:sans-serif;text-align:center;padding:40px">
+
+<h2>Support ${profile.handle}</h2>
+
+${profile.cash ? `<a href="https://cash.app/${profile.cash}" style="display:block;margin:10px;color:white">Cash App</a>` : ""}
+${profile.paypal ? `<a href="${profile.paypal}" style="display:block;margin:10px;color:white">PayPal</a>` : ""}
+${profile.btc ? `<a href="bitcoin:${profile.btc}" style="display:block;margin:10px;color:white">Bitcoin</a>` : ""}
+${profile.bmac ? `<a href="${profile.bmac}" style="display:block;margin:10px;color:white">Coffee</a>` : ""}
+
+</body>
+</html>
+`;
+}
+
+function generateQR() {
+  const profile = JSON.parse(localStorage.getItem("tipstreams_profile"));
+  if (!profile) return alert("Save profile first");
+
+  const html = buildRouterHTML(profile);
+  const blob = new Blob([html], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+
+  document.getElementById("qr").innerHTML = "";
+  new QRCode(document.getElementById("qr"), {
+    text: url,
+    width: 200,
+    height: 200
+  });
+
+  document.getElementById("overlayQR").innerHTML = "";
+  new QRCode(document.getElementById("overlayQR"), {
+    text: url,
+    width: 120,
+    height: 120
+  });
+}
+
+function openOverlay() {
+  const profile = JSON.parse(localStorage.getItem("tipstreams_profile"));
+  if (!profile) return alert("Save profile first");
+
+  const html = buildRouterHTML(profile);
+  const blob = new Blob([html], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+
+  const overlay = `
+<!DOCTYPE html>
+<html>
+<body style="margin:0;background:transparent;overflow:hidden">
+<div style="position:absolute;bottom:20px;right:20px;text-align:center">
+<div id="q"></div>
+<div style="color:white;font-size:12px">Scan to support</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"><\/script>
+<script>
+new QRCode(document.getElementById("q"), {
+text: "${url}",
+width: 140,
+height: 140
+});
+<\/script>
+
+</body>
+</html>
+`;
+
+  const overlayBlob = new Blob([overlay], { type: "text/html" });
+  const overlayURL = URL.createObjectURL(overlayBlob);
+
+  window.open(overlayURL);
+}
+
+loadProfile();
+
+</script>
+
+</body>
+</html>
