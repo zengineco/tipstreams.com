@@ -331,7 +331,13 @@ header {
 }
 .input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
 .input::placeholder { color: var(--text-3); }
-
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0px 1000px var(--surface2) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
 .input-status {
   position: absolute; right: 12px; top: 50%;
   transform: translateY(-50%); font-size: 14px; pointer-events: none;
