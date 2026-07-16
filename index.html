@@ -82,14 +82,32 @@
 // ============================================================
 -->
 <meta name="description" content="Professional streamer monetization studio. Branded tip overlays, multi-payment QR router, crypto + platforms. Your wallet, your audience, zero middleman.">
+<meta name="keywords" content="OBS tip overlay, streamer tip QR code, creator payment link, crypto tips, PayPal tips, Cash App tips, Twitch donation QR, Kick streamer tools, YouTube Live tips">
 <meta property="og:title"       content="TipStreams — Streamer Monetization Studio">
 <meta property="og:description" content="Your wallet. Your audience. Zero middleman.">
-<meta property="og:image"       content="https://tipstreams.com/og.png">
+<meta property="og:image"       content="https://tipstreams.com/ts-logo.png">
 <meta property="og:url"         content="https://tipstreams.com">
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="TipStreams">
 <meta name="twitter:description" content="Your wallet. Your audience. Zero middleman.">
+<meta name="twitter:image"       content="https://tipstreams.com/ts-logo.png">
 <link rel="canonical" href="https://tipstreams.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TipStreams",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://tipstreams.com",
+  "description": "Streamer monetization studio for branded tip QR pages, multi-payment routers, and OBS overlays.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -109,8 +127,8 @@
   --border:   rgba(255,255,255,0.06);
   --border-hi:rgba(255,255,255,0.12);
   --text:     #f0f4f8;
-  --text-2:   #8899aa;
-  --text-3:   #4a5a6a;
+  --text-2:   #aebccb;
+  --text-3:   #7a8b9c;
   --accent:   #f7931a;
   --accent-dim: rgba(247,147,26,0.12);
   --accent-glow: rgba(247,147,26,0.2);
@@ -136,6 +154,80 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* GLOBAL TEXT OUTLINE — inherited by every text node under <body>.
+   Crisp 8-direction 1px black halo so all text reads on any texture,
+   QR preview, or overlay background. High-contrast by request. */
+body {
+  text-shadow:
+    -1px -1px 0 rgba(0,0,0,0.85),
+     0px -1px 0 rgba(0,0,0,0.85),
+     1px -1px 0 rgba(0,0,0,0.85),
+     1px  0px 0 rgba(0,0,0,0.85),
+     1px  1px 0 rgba(0,0,0,0.85),
+     0px  1px 0 rgba(0,0,0,0.85),
+    -1px  1px 0 rgba(0,0,0,0.85),
+    -1px  0px 0 rgba(0,0,0,0.85);
+}
+/* Form fields keep the outline but sit on a solid surface so glyphs stay legible. */
+input, textarea, select {
+  text-shadow:
+    -1px -1px 0 rgba(0,0,0,0.6),
+     1px -1px 0 rgba(0,0,0,0.6),
+    -1px  1px 0 rgba(0,0,0,0.6),
+     1px  1px 0 rgba(0,0,0,0.6);
+}
+
+/* ============================================================ VIEW SWITCH — 3 top-level interfaces */
+.view-switch {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.view-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  padding: 16px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .1s;
+  font-family: var(--font);
+  color: var(--text-2);
+}
+.view-tab:hover { border-color: var(--border-hi); transform: translateY(-1px); }
+.view-tab.active {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  color: var(--text);
+}
+.view-tab .vt-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-3);
+}
+.view-tab.active .vt-num { color: var(--accent); }
+.view-tab .vt-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.view-tab .vt-sub { font-size: 11px; line-height: 1.4; color: var(--text-2); }
+.view-switch-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+}
+.view-panel { display: none; }
+.view-panel.active { display: block; animation: viewFade .25s ease; }
+@keyframes viewFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  .view-switch { grid-template-columns: 1fr; }
 }
 
 body::before {
@@ -216,8 +308,10 @@ header {
 .header-cta:hover { color: var(--text); border-color: var(--accent); }
 
 /* ============================================================ HERO */
-.hero { margin-bottom: 56px; max-width: 640px; }
-
+.hero {
+  margin-bottom: 32px;
+  max-width: 860px;
+}
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 11px; font-family: var(--font-mono);
@@ -235,13 +329,158 @@ header {
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
 .hero-title {
-  font-size: clamp(28px, 4.5vw, 48px);
+  font-size: clamp(30px, 5vw, 56px);
   font-weight: 700; letter-spacing: -1.5px; line-height: 1.05;
   color: var(--text); margin-bottom: 16px;
 }
 .hero-title em { font-style: normal; color: var(--accent); }
 
-.hero-sub { font-size: 15px; color: var(--text-2); line-height: 1.7; font-weight: 300; }
+.hero-sub {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  font-weight: 400;
+  max-width: 720px;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+.hero-truth {
+  margin-top: 18px;
+  max-width: 760px;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ============================================================ ENTRY GUIDE */
+.entry-guide {
+  margin: 0 0 40px;
+  padding: 22px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-lg);
+}
+.entry-guide-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+.entry-guide-title {
+  font-size: clamp(20px, 3vw, 30px);
+  line-height: 1.12;
+  letter-spacing: -0.8px;
+  color: var(--text);
+}
+.entry-guide-sub {
+  color: var(--text-2);
+  line-height: 1.7;
+  max-width: 680px;
+  margin-top: 8px;
+}
+.lane-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.lane-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 16px;
+}
+.lane-card.primary {
+  border-color: rgba(247,147,26,0.42);
+  background: linear-gradient(180deg, rgba(247,147,26,0.10), rgba(255,255,255,0.025));
+}
+.lane-kicker {
+  font: 10px/1.4 var(--font-mono);
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.lane-card h3 {
+  font-size: 17px;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+.lane-card p {
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.lane-list {
+  display: grid;
+  gap: 7px;
+  margin-top: 10px;
+}
+.lane-list div {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 8px;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.lane-list strong {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.lane-meter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.lane-pill {
+  font: 10px/1 var(--font-mono);
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  border: 1px solid var(--border-hi);
+  color: var(--text-2);
+  border-radius: 999px;
+  padding: 7px 9px;
+  background: rgba(0,0,0,0.18);
+}
+.lane-pill.good { color: var(--success); border-color: rgba(34,197,94,0.28); }
+.lane-pill.warn { color: var(--accent); border-color: rgba(247,147,26,0.32); }
+.diagnostic-band {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.diagnostic-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 14px;
+  background: rgba(0,0,0,0.18);
+}
+.diagnostic-card strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.diagnostic-card span {
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.6;
+}
+@media (max-width: 960px) {
+  .lane-grid,
+  .diagnostic-band { grid-template-columns: 1fr; }
+  .entry-guide-head { grid-template-columns: 1fr; }
+}
 
 /* ============================================================ APP GRID */
 .app-grid {
@@ -1296,19 +1535,43 @@ input[type="range"]::-webkit-slider-thumb {
       <div class="logo-name">Tip<span>Streams</span></div>
     </div>
     <div class="header-right">
-      <span class="version-pill">v2.4.2</span>
+      <span class="version-pill">v2.5.0</span>
       <a href="./privacy.html" class="header-cta" style="font-size:11px;padding:6px 12px;">Privacy</a>
       <a href="./terms.html"   class="header-cta" style="font-size:11px;padding:6px 12px;">Terms</a>
-      <a href="#studio" class="header-cta">Overlay Studio →</a>
+      <a href="#top" class="header-cta" onclick="switchView('overlay');return false;">Overlay Studio →</a>
     </div>
   </header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-eyebrow">Crypto · PayPal · Cash App · Venmo · Ko-fi · OBS Overlays · Zero middleman</div>
-    <h1 class="hero-title">Your wallet.<br>Your audience.<br><em>Zero middleman.</em></h1>
-    <p class="hero-sub">Generate a branded tip QR for your stream in seconds — crypto or platform. Works on Twitch, YouTube, Kick, OBS overlays, IRL events. Viewers scan, their app opens, they send direct to you. No account. No cut. No friction. Now with Overlay Studio and multi-payment router.</p>
+  <!-- HERO — plain promise, no platform-speak -->
+  <div class="hero" id="top">
+    <div class="hero-eyebrow">Your wallet · Your audience · Zero middleman</div>
+    <h1 class="hero-title">Get tipped<br>directly.</h1>
+    <p class="hero-sub">Turn a wallet or payment link you already own into a branded QR, a permanent tip page, and an OBS overlay. TipStreams never touches your money — viewers go straight to you. Pick one of three tools below.</p>
+    <p class="hero-truth"><strong style="color:var(--text);">Honest timing:</strong> a single QR takes seconds if you already have an address or PayPal/Cash App/Venmo/Ko-fi link. A polished tip page plus overlay is more like 10–20 minutes — branding and testing matter.</p>
   </div>
+
+  <!-- ============================================================
+       3-INTERFACE SWITCH — the only choice on the page.
+       Everything else is detail inside the chosen tool.
+       ============================================================ -->
+  <div class="view-switch" role="tablist" aria-label="Choose a tool">
+    <button class="view-tab active" data-view="qr" role="tab" onclick="switchView('qr')">
+      <span class="vt-num">01 / fastest</span>
+      <span class="vt-title">QR Code</span>
+      <span class="vt-sub">One branded QR for a single wallet or payment app. Download &amp; go.</span>
+    </button>
+    <button class="view-tab" data-view="page" role="tab" onclick="switchView('page')">
+      <span class="vt-num">02 / recommended</span>
+      <span class="vt-title">Tip Page</span>
+      <span class="vt-sub">One permanent link with every method. Update anytime, QR never changes.</span>
+    </button>
+    <button class="view-tab" data-view="overlay" role="tab" onclick="switchView('overlay')">
+      <span class="vt-num">03 / on stream</span>
+      <span class="vt-title">Overlay</span>
+      <span class="vt-sub">Drop your QR into an OBS-ready banner, sticker, or corner badge.</span>
+    </button>
+  </div>
+  <div class="view-switch-caption">// pick a tool — the options for it appear below</div>
 
   <!-- AD UNIT -->
   <div style="margin-bottom:40px;text-align:center;">
@@ -1320,6 +1583,9 @@ input[type="range"]::-webkit-slider-thumb {
          data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
+
+  <!-- ========== VIEW 01: QR CODE ========== -->
+  <div class="view-panel active" id="view-qr">
 
   <!-- APP GRID -->
   <div class="app-grid">
@@ -1572,6 +1838,10 @@ input[type="range"]::-webkit-slider-thumb {
 
   </div><!-- /app-grid -->
 
+  </div><!-- /view-qr -->
+
+  <!-- ========== VIEW 02: TIP PAGE (claim handle + method router) ========== -->
+  <div class="view-panel" id="view-page">
 
   <!-- ============================================================
        YOUR PAGE — handle claim + backend sync
@@ -1718,6 +1988,11 @@ input[type="range"]::-webkit-slider-thumb {
       </div>
     </div>
   </div>
+
+  </div><!-- /view-page -->
+
+  <!-- ========== VIEW 03: OVERLAY STUDIO ========== -->
+  <div class="view-panel" id="view-overlay">
 
   <!-- ============================================================
        OVERLAY STUDIO — NEW v2.0.0
@@ -1874,7 +2149,7 @@ input[type="range"]::-webkit-slider-thumb {
         <!-- QR Source -->
         <div class="card">
           <div class="card-label">qr source</div>
-          <div style="font-size:11px;color:var(--text-3);line-height:1.5;margin-bottom:12px;">Single method from generator above, or your full multi-payment router.</div>
+          <div style="font-size:11px;color:var(--text-3);line-height:1.5;margin-bottom:12px;">Uses the single QR you built in the <strong style="color:var(--text-2);">QR Code</strong> tool, or your full multi-payment router.</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
             <button class="btn btn-secondary" id="studio-qr-single" onclick="setStudioQRMode('single')" style="font-size:10px;">Current QR</button>
             <button class="btn btn-secondary" id="studio-qr-router" onclick="setStudioQRMode('router')" style="font-size:10px;">Router Page</button>
@@ -1887,7 +2162,7 @@ input[type="range"]::-webkit-slider-thumb {
       <!-- STUDIO PREVIEW -->
       <div class="studio-preview-wrap">
         <div class="popup-preview-label">OBS Preview</div>
-        <div class="studio-preview-stage">
+        <div class="studio-preview-stage" id="studio-preview-stage">
           <div class="studio-preview-bg studio-bg-hazard" id="studio-bg"></div>
           <div class="studio-overlay-card" id="studio-card">
             <div class="studio-overlay-qr-mount" id="studio-qr-mount">
@@ -1911,6 +2186,8 @@ input[type="range"]::-webkit-slider-thumb {
 
     </div>
   </div><!-- /studio-section -->
+
+  </div><!-- /view-overlay -->
 
   <!-- DOGEFUNDME PROMO — slim banner -->
   <div class="dfm-promo" id="dogefundme">
@@ -2119,6 +2396,33 @@ var STUDIO = {
   subtext:  '',
   qrMode:   'single'  // 'single' | 'router'
 };
+
+// VIEW STATE — which of the 3 top-level interfaces is showing
+var VIEW = { current: 'qr' };
+
+// ============================================================
+// VIEW SWITCHER — shows one of 3 interfaces, hides the rest.
+// The whole page is now "pick a tool, then its details."
+// READS: none
+// WRITES: DOM (.view-panel.active, .view-tab.active), VIEW.current
+// ============================================================
+function switchView(view) {
+  try {
+    VIEW.current = view;
+    var panels = document.querySelectorAll('.view-panel');
+    var tabs = document.querySelectorAll('.view-tab');
+    var i;
+    for (i = 0; i < panels.length; i++) {
+      panels[i].classList.toggle('active', panels[i].id === 'view-' + view);
+    }
+    for (i = 0; i < tabs.length; i++) {
+      tabs[i].classList.toggle('active', tabs[i].getAttribute('data-view') === view);
+    }
+    if (window.scrollTo) { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  } catch (err) {
+    console.error('switchView:', err);
+  }
+}
 
 // ============================================================
 // PROFILE PERSISTENCE (localStorage)
@@ -3339,8 +3643,10 @@ function applyFormFactor(form) {
   if (!card) return;
   card.className = 'studio-overlay-card ff-' + form;
   var mode = FORM_STAGE_MODE[form] || 'center';
-  stage.style.alignItems     = mode === 'center' ? 'center'  : 'stretch';
-  stage.style.justifyContent = mode === 'center' ? 'center'  : 'stretch';
+  if (stage) {
+    stage.style.alignItems     = mode === 'center' ? 'center'  : 'stretch';
+    stage.style.justifyContent = mode === 'center' ? 'center'  : 'stretch';
+  }
   // Newscast accent top-border color
   if (form === 'newscast') {
     card.style.setProperty('--nc-accent', STUDIO.accent);
@@ -4170,7 +4476,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   tsBootSession();
-  log('TipStreams v2.4.2 booted — Zengine™');
+  switchView('qr');
+  log('TipStreams v2.5.0 booted — Zengine™');
 });
 </script>
 </body>
