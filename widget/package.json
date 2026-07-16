@@ -47,10 +47,10 @@
   "homepage": "https://tipstreams.com/widget/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/f-keys/tip-widget.git"
+    "url": "git+https://github.com/zengineco/tip-widget.git"
   },
   "bugs": {
-    "url": "https://github.com/f-keys/tip-widget/issues"
+    "url": "https://github.com/zengineco/tip-widget/issues"
   },
   "author": "Vince Gonzalez (F-Keys) <hello@f-keys.com> (https://f-keys.com)",
   "license": "MIT",
