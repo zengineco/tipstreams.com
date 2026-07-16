@@ -1,0 +1,58 @@
+{
+  "name": "@f-keys/tip-widget",
+  "version": "0.1.0",
+  "description": "Embeddable multi-method tip QR web component for streamers and creators. One <script> tag, zero dependencies, nothing leaves the browser. Deep-links to crypto (BIP-21) + PayPal, Cash App, Venmo, Ko-fi. No account, no custody, no fees.",
+  "keywords": [
+    "tip",
+    "tips",
+    "tipping",
+    "donation",
+    "donate",
+    "tip-jar",
+    "qr",
+    "qr-code",
+    "streamer",
+    "twitch",
+    "obs",
+    "obs-overlay",
+    "creator",
+    "web-component",
+    "custom-element",
+    "embeddable",
+    "widget",
+    "crypto",
+    "bitcoin",
+    "ethereum",
+    "dogecoin",
+    "bip21",
+    "paypal",
+    "cashapp",
+    "venmo",
+    "kofi",
+    "no-fee",
+    "zero-dependency",
+    "client-side",
+    "tipstreams",
+    "f-keys"
+  ],
+  "main": "tip-stream.js",
+  "browser": "tip-stream.js",
+  "unpkg": "tip-stream.js",
+  "jsdelivr": "tip-stream.js",
+  "files": [
+    "tip-stream.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://tipstreams.com/widget/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f-keys/tip-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/f-keys/tip-widget/issues"
+  },
+  "author": "Vince Gonzalez (F-Keys) <hello@f-keys.com> (https://f-keys.com)",
+  "license": "MIT",
+  "sideEffects": true
+}

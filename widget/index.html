@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&lt;tip-stream&gt; — embeddable tip widget | TipStreams · F-Keys</title>
+<meta name="description" content="Drop-in embeddable tip widget: one script tag, zero dependencies, nothing leaves the browser. Branded multi-method (crypto + PayPal/Cash App/Venmo/Ko-fi) tip QR web component for any site or OBS overlay.">
+<style>
+  :root{--bg:#0b0e12;--panel:#12161c;--fg:#eef2f6;--fg2:#9aa6b3;--bd:#222a33;--ac:#f7931a;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;}
+  .wrap{max-width:960px;margin:0 auto;padding:48px 20px 80px;}
+  .eyebrow{font:600 12px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);}
+  h1{font-size:34px;margin:12px 0 8px;letter-spacing:-.02em;}
+  h1 code{background:#1b2027;padding:2px 10px;border-radius:8px;font-size:.85em;}
+  .lede{color:var(--fg2);font-size:17px;max-width:640px;}
+  .grid{display:flex;flex-wrap:wrap;gap:28px;margin:40px 0;}
+  .demo{display:flex;flex-direction:column;gap:10px;}
+  .demo .label{font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--fg2);}
+  h2{font-size:20px;margin:48px 0 12px;}
+  p{color:var(--fg2);}
+  pre{background:#0f1319;border:1px solid var(--bd);border-radius:12px;padding:18px;overflow:auto;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:#dbe4ee;}
+  .tok-tag{color:#7fd3a8;}.tok-attr{color:#f0b45f;}.tok-str{color:#8fb7ff;}.tok-com{color:#5a6472;}
+  code.inline{background:#1b2027;padding:1px 6px;border-radius:5px;font-size:.9em;color:#dbe4ee;}
+  ul{color:var(--fg2);} li{margin:4px 0;}
+  .foot{margin-top:56px;padding-top:24px;border-top:1px solid var(--bd);font-size:13px;color:var(--fg2);}
+  .foot a{color:var(--ac);text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">TipStreams · a flagship project of F-Keys</div>
+  <h1>&lt;tip-stream&gt; <code>drop-in</code></h1>
+  <p class="lede">One <code class="inline">&lt;script&gt;</code> tag. Zero dependencies. Nothing leaves the browser. A branded, scannable tip QR + method picker that deep-links straight to <em>your</em> wallets and payment links — embeddable in any site, bio page, or OBS browser source.</p>
+
+  <div class="grid">
+    <div class="demo">
+      <span class="label">Crypto-first · dark · orange</span>
+      <tip-stream name="@nova.btc" accent="#f7931a" theme="dark">
+        <script type="application/json">
+        { "heading": "Tip Nova",
+          "methods": [
+            { "type": "bitcoin",  "address": "bc1qexampleaddressonlynotrealxxxxxxxxxxxx0" },
+            { "type": "ethereum", "address": "0x1111111111111111111111111111111111111111" },
+            { "type": "dogecoin", "address": "DExampleDogeAddressNotRealxxxxxxxxxx" },
+            { "type": "solana",   "address": "SoLExampLeAddreSSnotReal1111111111111111111" }
+          ] }
+        </script>
+      </tip-stream>
+    </div>
+
+    <div class="demo">
+      <span class="label">Multi-method · light · violet</span>
+      <tip-stream name="@casey" accent="#8b5cf6" theme="light">
+        <script type="application/json">
+        { "heading": "Support the stream",
+          "methods": [
+            { "type": "paypal",  "handle": "caseyexample" },
+            { "type": "cashapp", "handle": "$caseyexample" },
+            { "type": "venmo",   "handle": "@caseyexample" },
+            { "type": "kofi",    "label": "Ko-fi", "url": "https://ko-fi.com/caseyexample" },
+            { "type": "bitcoin", "address": "bc1qexampleaddressonlynotrealxxxxxxxxxxxx0" }
+          ] }
+        </script>
+      </tip-stream>
+    </div>
+  </div>
+
+  <h2>Embed it</h2>
+  <p>Copy two lines. That's the whole integration.</p>
+  <pre><span class="tok-com">&lt;!-- 1. load once --&gt;</span>
+<span class="tok-tag">&lt;script</span> <span class="tok-attr">src</span>=<span class="tok-str">"https://tipstreams.com/widget/tip-stream.js"</span><span class="tok-tag">&gt;&lt;/script&gt;</span>
+
+<span class="tok-com">&lt;!-- 2. drop it anywhere, configure with JSON --&gt;</span>
+<span class="tok-tag">&lt;tip-stream</span> <span class="tok-attr">name</span>=<span class="tok-str">"@you"</span> <span class="tok-attr">accent</span>=<span class="tok-str">"#f7931a"</span> <span class="tok-attr">theme</span>=<span class="tok-str">"dark"</span><span class="tok-tag">&gt;</span>
+  <span class="tok-tag">&lt;script</span> <span class="tok-attr">type</span>=<span class="tok-str">"application/json"</span><span class="tok-tag">&gt;</span>
+  {
+    "heading": "Tip me",
+    "methods": [
+      { "type": "bitcoin", "address": "YOUR_BTC_ADDRESS" },
+      { "type": "paypal",  "handle": "yourname" },
+      { "type": "cashapp", "handle": "$yourtag" }
+    ]
+  }
+  <span class="tok-tag">&lt;/script&gt;</span>
+<span class="tok-tag">&lt;/tip-stream&gt;</span></pre>
+
+  <h2>Supported methods</h2>
+  <ul>
+    <li><strong>Crypto</strong> (BIP-21 deep links): <code class="inline">bitcoin</code>, <code class="inline">ethereum</code>, <code class="inline">litecoin</code>, <code class="inline">dogecoin</code>, <code class="inline">bitcoincash</code>, <code class="inline">monero</code>, <code class="inline">solana</code> — scan opens the viewer's wallet with your address pre-filled.</li>
+    <li><strong>Fiat / links</strong>: <code class="inline">paypal</code>, <code class="inline">cashapp</code>, <code class="inline">venmo</code>, <code class="inline">kofi</code>, or any <code class="inline">{ "url": "..." }</code>.</li>
+  </ul>
+
+  <h2>Why it's different</h2>
+  <ul>
+    <li><strong>No account, no custody, no cut.</strong> The widget never touches money — it renders a QR/link straight to destinations you control.</li>
+    <li><strong>Nothing leaves the browser.</strong> Addresses are encoded client-side; there are no network requests, no tracking, no backend.</li>
+    <li><strong>Portable.</strong> Works in any HTML — your site, a bio page, Notion, or an OBS browser source.</li>
+    <li><strong>Themed &amp; branded.</strong> Set <code class="inline">accent</code>, <code class="inline">theme</code>, and per-method labels.</li>
+  </ul>
+
+  <div class="foot">
+    <code class="inline">&lt;tip-stream&gt;</code> · Powered by <a href="https://tipstreams.com">TipStreams</a>, a flagship project of <a href="https://f-keys.com">F-Keys</a>. MIT-licensed. QR encoder © Kazuhiko Arase (MIT).
+    <br>Example addresses above are placeholders — not real wallets.
+  </div>
+</div>
+
+<script src="./tip-stream.js"></script>
+</body>
+</html>

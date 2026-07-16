@@ -1,3 +1,37 @@
+# robots.txt — tipstreams.com — maximize AI + search visibility
+# A project of F-Keys. Nothing here is private; we want to be found and cited.
+
+# --- AI answer / search + live-fetch crawlers (these cite you to users) ---
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# --- AI training crawlers (allow = future free exposure; nothing to protect) ---
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+
+# --- Legacy Anthropic UA strings (harmless back-compat) ---
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+
+# --- Everyone else (incl. Googlebot, Bingbot) ---
 User-agent: *
 Allow: /
 
