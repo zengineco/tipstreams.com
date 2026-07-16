@@ -328,6 +328,18 @@ header {
 
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
+/* Reduced-motion: kill perpetual animations + JS smooth-scroll (WCAG 2.1 AA).
+   The only always-on animation on the page is the hero pulse dot; this idles it
+   for motion-sensitive users and stops any continuous compositor repaint. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 .hero-title {
   font-size: clamp(30px, 5vw, 56px);
   font-weight: 700; letter-spacing: -1.5px; line-height: 1.05;
@@ -1535,7 +1547,7 @@ input[type="range"]::-webkit-slider-thumb {
       <div class="logo-name">Tip<span>Streams</span></div>
     </div>
     <div class="header-right">
-      <span class="version-pill">v2.5.0</span>
+      <span class="version-pill">v2.5.1</span>
       <a href="./privacy.html" class="header-cta" style="font-size:11px;padding:6px 12px;">Privacy</a>
       <a href="./terms.html"   class="header-cta" style="font-size:11px;padding:6px 12px;">Terms</a>
       <a href="#top" class="header-cta" onclick="switchView('overlay');return false;">Overlay Studio →</a>
@@ -2418,7 +2430,10 @@ function switchView(view) {
     for (i = 0; i < tabs.length; i++) {
       tabs[i].classList.toggle('active', tabs[i].getAttribute('data-view') === view);
     }
-    if (window.scrollTo) { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    if (window.scrollTo) {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    }
   } catch (err) {
     console.error('switchView:', err);
   }
@@ -4477,7 +4492,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   tsBootSession();
   switchView('qr');
-  log('TipStreams v2.5.0 booted — Zengine™');
+  log('TipStreams v2.5.1 booted — Zengine™');
 });
 </script>
 </body>
